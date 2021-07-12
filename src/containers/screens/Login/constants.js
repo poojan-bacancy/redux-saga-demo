@@ -5,3 +5,15 @@ export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 export const REGISTRATION_REQUEST = 'REGISTRATION_REQUEST';
 export const REGISTRATION_SUCCESS = 'REGISTRATION_SUCCESS';
 export const REGISTRATION_FAILURE = 'REGISTRATION_FAILURE';
+
+export const loginFormPlaceholders = {
+    username : 'Username',
+    password : 'Password'
+}
+export const LOGINFORM_BUTTON = "Sign in"
+export const SIGNUP_TEXT = "Don't have an account? "
+export const SIGNUP_LINK = "Sign up!"
+export const FORGOTPASS_LINK = "Forgot Password?"
+
+export const FORGOT_PASS_FORM_TITLE = "Forgot Password"
+export const REGISTER_FORM_TITLE = "Register"

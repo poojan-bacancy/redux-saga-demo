@@ -1,10 +1,15 @@
 import React from 'react'
 import { View, Text } from 'react-native'
+import { Header } from 'components'
+import { FORGOT_PASS_FORM_TITLE } from '../constants'
 
-const ForgotPassword = () => {
+const ForgotPassword = (props) => {
     return (
         <View>
-            <Text></Text>
+            <Header 
+                headerTitle = {FORGOT_PASS_FORM_TITLE}
+                goBack={() => props.navigation.pop()}
+            />
         </View>
     )
 }
