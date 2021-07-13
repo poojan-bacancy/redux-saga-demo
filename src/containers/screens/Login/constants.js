@@ -15,5 +15,4 @@ export const SIGNUP_TEXT = "Don't have an account? "
 export const SIGNUP_LINK = "Sign up!"
 export const FORGOTPASS_LINK = "Forgot Password?"
 
-export const FORGOT_PASS_FORM_TITLE = "Forgot Password"
-export const REGISTER_FORM_TITLE = "Register"
+

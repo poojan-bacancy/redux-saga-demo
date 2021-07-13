@@ -1,0 +1,1 @@
+export const REGISTER_FORM_TITLE = "Register"

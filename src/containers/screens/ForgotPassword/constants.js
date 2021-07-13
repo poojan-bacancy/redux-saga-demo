@@ -1,0 +1,1 @@
+export const FORGOT_PASS_FORM_TITLE = "Forgot Password"
