@@ -6,10 +6,7 @@ import { FORGOT_PASS_FORM_TITLE } from './constants'
 const ForgotPassword = (props) => {
     return (
         <View>
-            <Header 
-                headerTitle = {FORGOT_PASS_FORM_TITLE}
-                goBack={() => props.navigation.pop()}
-            />
+            <Header title = {FORGOT_PASS_FORM_TITLE} goBack={() => props.navigation.pop()} />
         </View>
     )
 }

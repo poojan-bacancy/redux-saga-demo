@@ -1,18 +1,25 @@
-import React from 'react'
+import React , { useState } from 'react'
 import { StyleSheet, Text, TextInput, View } from 'react-native'
 import { verticalScale } from 'react-native-size-matters'
-import Colors from '../utils/Colors'
-import { alphaNumeric, removeSpaces } from '../utils/Validations'
+
+import Colors from 'utils/Colors'
+import PasswordSwitch from './PasswordSwitch'
+import { removeSpaces } from 'utils/Validations'
 
 const FormInput = (props) => {
-
     const { active , touched , error } = props.meta
 
-    const isErrorVisible = () => {
-        return touched && error
-            ? <Text style={styles.errorText}>{error}</Text> 
-            : null
-    }
+    const [isPasswordVisible,setIsPasswordVisible] = useState(false)
+    const eyePressHandler = () => setIsPasswordVisible(prevState => !prevState)
+    const isPasswordTogglerVisible = () => 
+        props.secureField 
+        ? <PasswordSwitch isVisible={isPasswordVisible} onPress={eyePressHandler} />
+        :null 
+    
+    const isErrorVisible = () => 
+        touched && error
+        ? <Text style={styles.errorText}>{error}</Text> 
+        : null
 
     const formInputContainerStyle = {
         ...styles.formInputContainer,
@@ -20,7 +27,7 @@ const FormInput = (props) => {
     }
 
     const textChangeHandler = (term) => {
-        let value = removeSpaces(term)
+        let value = !props.allowSpaces ? removeSpaces(term) : term
         props.input.onChange(value)
     }
 
@@ -29,6 +36,7 @@ const FormInput = (props) => {
             <View style={formInputContainerStyle}>
                 <TextInput
                     {...props}
+                    secureTextEntry={ props.secureField && !isPasswordVisible}
                     ref={props.refField}
                     style={styles.input}
                     value={props.input.value}
@@ -37,6 +45,7 @@ const FormInput = (props) => {
                     onFocus={props.input.onFocus}
                     onBlur={props.input.onBlur}
                 />
+                {isPasswordTogglerVisible()}
             </View>
             {isErrorVisible()}
         </View>
@@ -47,10 +56,14 @@ export default FormInput
 
 const styles = StyleSheet.create({
     formInputContainer :{
+        flexDirection : 'row',
+        alignItems : 'center',
+        justifyContent : 'space-between',
         marginTop : 20,
-        borderBottomWidth : 1
+        borderBottomWidth : 1,
     },
     input : {
+        flex  :1,
         color : Colors.black,
         fontSize : verticalScale(14)
     },
