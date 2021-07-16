@@ -23,7 +23,7 @@ const Register = (props) => {
         >
             <Header title = {REGISTER_FORM_TITLE} goBack={() => props.navigation.pop()} />
 
-            <ScrollView contentContainerStyle={styles.formContainer}  >
+            <ScrollView keyboardShouldPersistTaps="handled"  contentContainerStyle={styles.formContainer}  >
                 {page === 1 && <RegisterPageOne nextPage={goToNextPage} />}
                 {page === 2 && <RegisterPageTwo nextPage={goToNextPage} prevPage={goToPrevPage} />}
                 {page === 3 && <RegisterPageThree onSubmit={onSubmit} prevPage={goToPrevPage} />}
