@@ -36,7 +36,7 @@ const FormInput = (props) => {
             <View style={formInputContainerStyle}>
                 <TextInput
                     {...props}
-                    secureTextEntry={ props.secureField && !isPasswordVisible}
+                    secureTextEntry={ props.secureField && !isPasswordVisible }
                     ref={props.refField}
                     style={styles.input}
                     value={props.input.value}

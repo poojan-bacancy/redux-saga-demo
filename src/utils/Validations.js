@@ -1,4 +1,4 @@
-import { detectSpacesRegex, alphaNumericRegex , passwordRegex, mobilenoRegex, emailRegex } from "./regex"
+import { detectSpacesRegex , passwordRegex, mobilenoRegex, emailRegex } from "./regex"
 
 const validationStrings = {
     usernameRequired : 'Username is Required',
@@ -23,7 +23,6 @@ export const mobileNoRequired = (value) => value? undefined : validationStrings.
 export const usernameRequired = (value) => value? undefined : validationStrings.usernameRequired
 
 export const fullnameRequired = (value) => value? undefined : validationStrings.fullNameRequired
-
 
 
 export const removeSpaces = (term) => term.replace(detectSpacesRegex, '')

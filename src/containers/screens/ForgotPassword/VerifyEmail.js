@@ -33,5 +33,5 @@ const VerifyEmail = ({handleSubmit,nextPage}) => {
 }
 
 export default reduxForm({
-    form : 'verify-email'
+    form : 'forgot-password'
 })(VerifyEmail)

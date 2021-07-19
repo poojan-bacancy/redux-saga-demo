@@ -22,6 +22,7 @@ const EnterVerificationCode = ({handleSubmit,nextPage}) => {
 
                 <Field             
                     name="pinOne"
+                    autoFocus
                     component={VerificationCodeInput}
                     onSubmit={() => pin2Ref.current.focus()}
                 />
@@ -51,7 +52,7 @@ const EnterVerificationCode = ({handleSubmit,nextPage}) => {
 }
 
 export default reduxForm({
-    form: 'verification-code-form'
+    form: 'forgot-password'
 })(EnterVerificationCode)
 
 const styles = StyleSheet.create({

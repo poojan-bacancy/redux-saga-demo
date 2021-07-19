@@ -19,7 +19,8 @@ const VerificationCodeInput = (props) => {
 
     return (
         <View style={codeInputContainerStyle}>
-            <TextInput 
+            <TextInput
+                {...props} 
                 style={styles.codeInput}
                 ref={props.refField}
                 keyboardType="numeric"

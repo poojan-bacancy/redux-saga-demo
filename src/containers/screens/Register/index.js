@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { reset } from 'redux-form'
+import { useDispatch } from 'react-redux'
 import { ScrollView , Platform , StyleSheet , KeyboardAvoidingView } from 'react-native'
 import { scale, verticalScale } from 'react-native-size-matters'
 
@@ -15,13 +17,20 @@ const Register = (props) => {
     const goToNextPage = () => setPage( page => page + 1 )
     const goToPrevPage = () => setPage( page => page - 1 )
 
+    const dispatch = useDispatch()
+        
+    const goBackHandler = () => {
+        dispatch(reset('register-form'))
+        props.navigation.pop()    
+    } 
+
     return (
         <KeyboardAvoidingView
             behavior="height"
             keyboardVerticalOffset = { Platform.OS === 'ios' ? 40 : 0 }
             style={styles.screen}
         >
-            <Header title = {REGISTER_FORM_TITLE} goBack={() => props.navigation.pop()} />
+            <Header title = {REGISTER_FORM_TITLE} goBack={goBackHandler} />
 
             <ScrollView keyboardShouldPersistTaps="handled"  contentContainerStyle={styles.formContainer}  >
                 {page === 1 && <RegisterPageOne nextPage={goToNextPage} />}

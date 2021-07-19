@@ -1,4 +1,6 @@
 import React , { useState } from 'react'
+import { reset } from 'redux-form'
+import { useDispatch } from 'react-redux'
 import { scale, verticalScale } from 'react-native-size-matters'
 import { KeyboardAvoidingView , ScrollView, StyleSheet } from 'react-native'
 
@@ -7,6 +9,7 @@ import { FORGOT_PASS_FORM_TITLE, SET_PASSWORD_SCREEN_TITlE, VERIFICATION_SCREEN_
 import VerifyEmail from './VerifyEmail'
 import EnterVerificationCode from './EnterVerificationCode'
 import SetPassword from './SetPassword'
+
 
 const ForgotPassword = (props) => {
 
@@ -21,13 +24,20 @@ const ForgotPassword = (props) => {
         ? VERIFICATION_SCREEN_TITLE 
         : SET_PASSWORD_SCREEN_TITlE
 
+    const dispatch = useDispatch()
+        
+    const goBackHandler = () => {
+        dispatch(reset('forgot-password'))
+        props.navigation.pop()    
+    } 
+
     return (
         <KeyboardAvoidingView
             behavior="height"
             keyboardVerticalOffset = { Platform.OS === 'ios' ? 40 : 0 }
             style={styles.screen}
         >
-            <Header title = {headerTitle} goBack={() => props.navigation.pop()} />
+            <Header title = {headerTitle} goBack={goBackHandler} />
 
             <ScrollView keyboardShouldPersistTaps="handled" contentContainerStyle={styles.formContainer}>
                 {page === 1 && <VerifyEmail nextPage={goToNextPage} />}

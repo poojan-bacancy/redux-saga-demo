@@ -17,11 +17,11 @@ const renderHobbies = ({ fields }) => {
                 onPress={() => fields.push({})}
             />
             {fields.map((hobby,index) => (
-                <View style={styles.hobbyInput}>
+                <View key={index} style={styles.hobbyInput}>
                     <View style={{flex : 1}}>
                         <Field 
+                            
                             allowSpaces
-                            key={index}
                             name={hobby}
                             placeholder={`${placeholders.HOBBY} #${index + 1 }`}
                             component={FormInput}

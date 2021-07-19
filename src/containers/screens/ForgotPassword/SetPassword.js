@@ -1,6 +1,6 @@
 import React , {useRef} from 'react'
 import { connect } from 'react-redux'
-import { StyleSheet, Text, View } from 'react-native'
+import { Text, View } from 'react-native'
 import { Field, formValueSelector, reduxForm } from 'redux-form'
 
 import Styles from './Styles'
@@ -15,7 +15,7 @@ let SetPassword = (props) => {
     const confirmPassRef = useRef()
 
     const validateConfirmPassword = (password) => 
-        password && password !== props.password
+        password && password !== props.newPassword
         ? VALIDATE_REENTERED_PASSWORD
         : undefined
     
@@ -27,7 +27,7 @@ let SetPassword = (props) => {
             </Text>
 
             <Field 
-                name="password"
+                name="newPassword"
                 secureField
                 placeholder={placeholders.PASSWORD}
                 component={FormInput}
@@ -37,7 +37,7 @@ let SetPassword = (props) => {
                 onSubmitEditing={() => confirmPassRef.current.focus()}
             />
             <Field 
-                name="confirmPassword"
+                name="confirmNewPassword"
                 refField={confirmPassRef}
                 secureField
                 placeholder={placeholders.CONFIRM_PASSWORD}
@@ -56,16 +56,15 @@ let SetPassword = (props) => {
 }
 
 SetPassword =  reduxForm({
-    form: 'set-password-form',
+    form: 'forgot-password',
+    destroyOnUnmount : false,
+    forceUnregisterOnUnmount : true
 })(SetPassword)
 
-const selector = formValueSelector('set-password-form')
+const selector = formValueSelector('forgot-password')
 
-SetPassword = connect(state => {
-    const password = selector(state, 'password')
-    return {password}
+export default SetPassword = connect(state => {
+    const newPassword = selector(state, 'newPassword')
+    return {newPassword}
 })(SetPassword)
 
-export default SetPassword
-
-const styles = StyleSheet.create({})
