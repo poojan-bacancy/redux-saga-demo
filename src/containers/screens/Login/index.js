@@ -31,14 +31,14 @@ const Login = (props) => {
                     blurOnSubmit={false}
                     placeholder={placeholders.username}
                     returnKeyType="next"
-                    validate={[usernameRequired,alphaNumeric]}
+                    validate={[usernameRequired]}
                     onSubmitEditing={() => passRef.current.focus()}
                 />
                 
                 <Field
                     name="password"
                     refField={passRef}
-                    secureTextEntry
+                    secureField
                     component={FormInput}
                     blurOnSubmit={true}
                     placeholder={placeholders.password}
