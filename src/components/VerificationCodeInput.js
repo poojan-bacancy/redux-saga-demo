@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, TextInput, View } from 'react-native'
+import { Keyboard, StyleSheet, TextInput, View } from 'react-native'
 import { scale, verticalScale } from 'react-native-size-matters'
 import Colors from '../utils/Colors'
 
@@ -14,21 +14,20 @@ const VerificationCodeInput = (props) => {
 
     const textChangeHandler = (term) => {
         props.input.onChange(term)
-        props.onSubmit()
+        props.focusNextFn(term)
     }
 
     return (
         <View style={codeInputContainerStyle}>
             <TextInput
                 {...props} 
-                style={styles.codeInput}
+                maxLength={1}
                 ref={props.refField}
                 keyboardType="numeric"
-                maxLength={1}
-                returnKeyType={props.returnKeyType ? props.returnKeyType :"next"}
-                onChangeText={textChangeHandler}
-                onFocus={props.input.onFocus}
+                style={styles.codeInput}
                 onBlur={props.input.onBlur}
+                onFocus={props.input.onFocus}
+                onChangeText={textChangeHandler}
             />
         </View>
     )
