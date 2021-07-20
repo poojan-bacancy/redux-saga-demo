@@ -4,9 +4,8 @@ import { Field, reduxForm } from 'redux-form'
 
 import Styles from './Styles'
 import { FormInput , CustomButton } from 'components'
-import { SUBMIT_BUTTON , placeholders, VERIFY_EMAIL_DETAILS } from './constants'
 import { emailRequired, validateEmail } from 'utils/Validations'
-
+import { SUBMIT_BUTTON , placeholders, VERIFY_EMAIL_DETAILS } from './constants'
 
 const VerifyEmail = ({handleSubmit,nextPage}) => {
     return (
@@ -25,7 +24,11 @@ const VerifyEmail = ({handleSubmit,nextPage}) => {
             />
 
             <View style={Styles.buttonContainer}>
-                <CustomButton style={Styles.button} buttonLabel={SUBMIT_BUTTON} onPress={handleSubmit(nextPage)}/>               
+                <CustomButton 
+                    style={Styles.button} 
+                    buttonLabel={SUBMIT_BUTTON} 
+                    onPress={handleSubmit(nextPage)}
+                />               
             </View>
             
         </View>

@@ -1,7 +1,8 @@
 import React from 'react'
-import { Keyboard, StyleSheet, TextInput, View } from 'react-native'
+import { StyleSheet, TextInput, View } from 'react-native'
 import { scale, verticalScale } from 'react-native-size-matters'
-import Colors from '../utils/Colors'
+
+import Colors from 'utils/Colors'
 
 const VerificationCodeInput = (props) => {
 

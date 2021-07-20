@@ -5,9 +5,8 @@ import { Field, reduxForm, SubmissionError } from 'redux-form'
 
 import Styles from './Styles'
 import Colors from 'utils/Colors'
-import { VerificationCodeInput } from 'components'
+import { ResenOtpLink , VerificationCodeInput } from 'components'
 import { ENTER_CODE_DETAILS, INVALID_OTP , RESEND_OTP_TIME_LIMIT, RESENT_OTP_TEXT } from './constants'
-import { ResenOtpLink } from 'components'
 
 const EnterVerificationCode = ({handleSubmit,nextPage,error}) => {
 

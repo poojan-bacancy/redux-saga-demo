@@ -2,7 +2,8 @@ import React from 'react'
 import { StyleSheet } from 'react-native'
 import { scale } from 'react-native-size-matters'
 import Feather from 'react-native-vector-icons/Feather'
-import Colors from '../utils/Colors'
+
+import Colors from 'utils/Colors'
 
 const PasswordSwitch = (props) => {
     return(

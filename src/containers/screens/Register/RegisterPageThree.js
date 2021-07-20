@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
-import { connect } from 'react-redux'
 import { View } from 'react-native'
+import { connect } from 'react-redux'
 import { Field, formValueSelector, reduxForm } from 'redux-form'
 
 import Styles from './Styles'

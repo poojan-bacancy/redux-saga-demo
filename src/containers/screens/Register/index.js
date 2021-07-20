@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { reset } from 'redux-form'
 import { useDispatch } from 'react-redux'
-import { ScrollView , Platform , StyleSheet , KeyboardAvoidingView } from 'react-native'
 import { scale, verticalScale } from 'react-native-size-matters'
+import { ScrollView , Platform , StyleSheet , KeyboardAvoidingView } from 'react-native'
 
 import { Header } from 'components'
 import { REGISTER_FORM_TITLE } from './constants'

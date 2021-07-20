@@ -1,7 +1,7 @@
 import React from 'react'
+import Ionicons from 'react-native-vector-icons/Ionicons'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { moderateScale, verticalScale } from 'react-native-size-matters'
-import Ionicons from 'react-native-vector-icons/Ionicons'
 
 const Header = ({goBack,title}) => {
     return (

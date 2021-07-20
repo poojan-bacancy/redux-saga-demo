@@ -1,9 +1,9 @@
 import React from 'react'
-import { NavigationContainer } from '@react-navigation/native'
-import { SafeAreaProvider } from 'react-native-safe-area-context'
+import { store } from 'store'
 import RootNavigator from 'navigator'
 import { Provider as ReduxProvider } from 'react-redux'
-import { store } from 'store'
+import { NavigationContainer } from '@react-navigation/native'
+import { SafeAreaProvider } from 'react-native-safe-area-context'
 
 const  App = () =>  {
   return (

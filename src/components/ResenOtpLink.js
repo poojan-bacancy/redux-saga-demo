@@ -1,7 +1,8 @@
 import React from 'react'
-import Colors from 'utils/Colors'
-import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 import { verticalScale } from 'react-native-size-matters'
+import { StyleSheet, Text, TouchableOpacity } from 'react-native'
+
+import Colors from 'utils/Colors'
 
 const ResenOtpLink = ({onResend}) => {
     return (

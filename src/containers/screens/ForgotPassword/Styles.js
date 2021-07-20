@@ -1,6 +1,7 @@
 import { StyleSheet } from "react-native";
-import Colors from 'utils/Colors'
 import { scale, verticalScale } from "react-native-size-matters";
+
+import Colors from 'utils/Colors'
 
 export default Styles =  StyleSheet.create({
     form : {

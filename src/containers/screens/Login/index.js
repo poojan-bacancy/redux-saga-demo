@@ -1,20 +1,18 @@
 import React, { useRef } from 'react'
-import { View, Text , Platform, StyleSheet, ScrollView, TouchableOpacity ,KeyboardAvoidingView } from 'react-native'
 import { Field , reduxForm } from 'redux-form'
-import { FormInput , CustomButton } from 'components'
-import { FORGOTPASS_LINK, loginFormPlaceholders as placeholders, LOGINFORM_BUTTON, SIGNUP_LINK, SIGNUP_TEXT } from './constants'
-import { alphaNumeric, passwordRequired, usernameRequired, validatePassword } from 'utils/Validations'
-import Colors  from 'utils/Colors'
 import { scale, verticalScale } from 'react-native-size-matters'
+import { View, Text , Platform, StyleSheet, ScrollView, TouchableOpacity ,KeyboardAvoidingView } from 'react-native'
+
+import Colors  from 'utils/Colors'
+import { FormInput , CustomButton } from 'components'
+import { alphaNumeric, passwordRequired, usernameRequired, validatePassword } from 'utils/Validations'
+import { FORGOTPASS_LINK, placeholders, LOGINFORM_BUTTON, SIGNUP_LINK, SIGNUP_TEXT } from './constants'
 
 const Login = (props) => {
     
     const passRef = useRef()
 
-    const onSubmit = (values) => {
-        console.log(values)
-    }
-
+    const onSubmit = (values) => console.log(values)
     const navigateToForgotPass = () => props.navigation.navigate('ForgotPassword')
     const navigateToRegister = () => props.navigation.navigate('Register')
 
@@ -60,7 +58,7 @@ const Login = (props) => {
                 />
 
                 <View style={styles.signupLinkContainer}>
-                    <Text style={styles.signuptext} >{SIGNUP_TEXT}</Text>
+                    <Text style={styles.signuptext}>{SIGNUP_TEXT}</Text>
                     <TouchableOpacity onPress={navigateToRegister}>
                         <Text style={[styles.signuptext,styles.signupLink]}>{SIGNUP_LINK}</Text>
                     </TouchableOpacity>

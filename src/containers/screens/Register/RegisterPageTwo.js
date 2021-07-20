@@ -1,7 +1,7 @@
 import React , { useRef } from 'react'
 import { StyleSheet, View } from 'react-native'
-import { Field, FieldArray, reduxForm } from 'redux-form'
 import { verticalScale } from 'react-native-size-matters'
+import { Field, FieldArray, reduxForm } from 'redux-form'
 
 import Styles from './Styles'
 import { DeleteButton, CustomButton, FormInput } from 'components'
@@ -20,7 +20,6 @@ const renderHobbies = ({ fields }) => {
                 <View key={index} style={styles.hobbyInput}>
                     <View style={{flex : 1}}>
                         <Field 
-                            
                             allowSpaces
                             name={hobby}
                             placeholder={`${placeholders.HOBBY} #${index + 1 }`}

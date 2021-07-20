@@ -1,6 +1,7 @@
 import React from 'react'
 import { StyleSheet, TouchableOpacity } from 'react-native'
 import MaterilaIcons from 'react-native-vector-icons/MaterialIcons'
+
 import Colors from 'utils/Colors'
 
 const DeleteButton = ({ onDelete }) => {

@@ -22,9 +22,7 @@ let SetPassword = (props) => {
     return (
         <View style={Styles.form}>
 
-            <Text style={Styles.detailText}>
-                {SET_PASSWORD_DETAILS}
-            </Text>
+            <Text style={Styles.detailText}>{SET_PASSWORD_DETAILS}</Text>
 
             <Field 
                 name="newPassword"
@@ -49,7 +47,10 @@ let SetPassword = (props) => {
             />
 
             <View style={Styles.buttonContainer}>
-                <CustomButton style={Styles.button} buttonLabel={SUBMIT_BUTTON} onPress={handleSubmit(onSubmit)}/>               
+                <CustomButton style={Styles.button} 
+                    buttonLabel={SUBMIT_BUTTON} 
+                    onPress={handleSubmit(onSubmit)}
+                />               
             </View>
         </View>
     )

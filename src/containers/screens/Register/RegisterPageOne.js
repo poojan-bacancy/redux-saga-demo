@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
-import { Field, reduxForm } from 'redux-form'
 import { View } from 'react-native'
+import { Field, reduxForm } from 'redux-form'
 
 import Styles from './Styles'
 import { FormInput , CustomButton } from 'components'
@@ -36,7 +36,10 @@ const RegisterPageOne = ({handleSubmit,nextPage}) => {
             />
 
             <View style={Styles.buttonContainer}>
-                <CustomButton style={Styles.button} buttonLabel={NEXT_BUTTON} onPress={handleSubmit(nextPage)}/>               
+                <CustomButton style={Styles.button} 
+                    buttonLabel={NEXT_BUTTON} 
+                    onPress={handleSubmit(nextPage)}
+                />               
             </View>
 
         </View>

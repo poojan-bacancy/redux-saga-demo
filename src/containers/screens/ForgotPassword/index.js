@@ -5,10 +5,10 @@ import { scale, verticalScale } from 'react-native-size-matters'
 import { KeyboardAvoidingView , ScrollView, StyleSheet } from 'react-native'
 
 import { Header } from 'components'
-import { FORGOT_PASS_FORM_TITLE, SET_PASSWORD_SCREEN_TITlE, VERIFICATION_SCREEN_TITLE } from './constants'
 import VerifyEmail from './VerifyEmail'
-import EnterVerificationCode from './EnterVerificationCode'
 import SetPassword from './SetPassword'
+import EnterVerificationCode from './EnterVerificationCode'
+import { FORGOT_PASS_FORM_TITLE, SET_PASSWORD_SCREEN_TITlE, VERIFICATION_SCREEN_TITLE } from './constants'
 
 
 const ForgotPassword = (props) => {
