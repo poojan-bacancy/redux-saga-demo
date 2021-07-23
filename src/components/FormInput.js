@@ -10,7 +10,9 @@ const FormInput = (props) => {
     const { active , touched , error } = props.meta
 
     const [isPasswordVisible,setIsPasswordVisible] = useState(false)
+
     const eyePressHandler = () => setIsPasswordVisible(prevState => !prevState)
+    
     const isPasswordTogglerVisible = () => 
         props.secureField 
         ? <PasswordSwitch isVisible={isPasswordVisible} onPress={eyePressHandler} />

@@ -5,7 +5,7 @@ import { View, Text , Platform, StyleSheet, ScrollView, TouchableOpacity ,Keyboa
 
 import Colors  from 'utils/Colors'
 import { FormInput , CustomButton } from 'components'
-import { alphaNumeric, passwordRequired, usernameRequired, validatePassword } from 'utils/Validations'
+import { passwordRequired, usernameRequired, validatePassword } from 'utils/Validations'
 import { FORGOTPASS_LINK, placeholders, LOGINFORM_BUTTON, SIGNUP_LINK, SIGNUP_TEXT } from './constants'
 
 const Login = (props) => {

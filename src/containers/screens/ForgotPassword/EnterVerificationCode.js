@@ -1,18 +1,18 @@
-import React , {useRef,useState,useEffect} from 'react'
+import React , {useRef} from 'react'
 import { StyleSheet, View , Text } from 'react-native'
 import { verticalScale } from 'react-native-size-matters'
 import { Field, reduxForm, SubmissionError } from 'redux-form'
 
 import Styles from './Styles'
 import Colors from 'utils/Colors'
+import { useOtp } from 'hooks'
 import { ResenOtpLink , VerificationCodeInput } from 'components'
 import { ENTER_CODE_DETAILS, INVALID_OTP , RESEND_OTP_TIME_LIMIT, RESENT_OTP_TEXT } from './constants'
 
 const EnterVerificationCode = ({handleSubmit,nextPage,error}) => {
 
-    const [resendButtonDisabledTime, setResendButtonDisabledTime] =  useState(RESEND_OTP_TIME_LIMIT)
+    const [resendTime,onResend] = useOtp(RESEND_OTP_TIME_LIMIT)
 
-    let resendOtpTimerInterval
     const inputPinsRef = useRef([])
     inputPinsRef.current = new Array(4)
     const inputPins = Array(4).fill('')
@@ -30,25 +30,6 @@ const EnterVerificationCode = ({handleSubmit,nextPage,error}) => {
         if(pin0 && pin1 && pin2 &&  pin3) nextPage()
         else throw new SubmissionError({ _error : INVALID_OTP })
     }
-
-    const startResendOtpTimer = () => {
-        if(resendOtpTimerInterval) clearInterval(resendOtpTimerInterval)
-        
-        resendOtpTimerInterval = setInterval(() => {
-            if(resendButtonDisabledTime <= 0) clearInterval(resendOtpTimerInterval)
-            else setResendButtonDisabledTime(resendButtonDisabledTime - 1)
-        }, 1000)
-    }
-
-    const onResendOtpButtonPress = () => setResendButtonDisabledTime(RESEND_OTP_TIME_LIMIT)
-
-    useEffect(() => {
-        startResendOtpTimer();
-    
-        return () => {
-          if (resendOtpTimerInterval) clearInterval(resendOtpTimerInterval)
-        }
-      }, [resendButtonDisabledTime])
 
     return (
         <View style={Styles.form}>
@@ -75,9 +56,9 @@ const EnterVerificationCode = ({handleSubmit,nextPage,error}) => {
 
             <Text style={styles.error}>{error}</Text>
 
-            {resendButtonDisabledTime > 0 
-            ? <Text style={styles.resendOtpText}>{RESENT_OTP_TEXT} {resendButtonDisabledTime}</Text>
-            : <ResenOtpLink onResend={onResendOtpButtonPress} />
+            {resendTime > 0 
+            ? <Text style={styles.resendOtpText}>{RESENT_OTP_TEXT} {resendTime}</Text>
+            : <ResenOtpLink onResend={onResend} />
             }
 
         </View>
