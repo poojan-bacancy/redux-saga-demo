@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
+import { scale, verticalScale } from 'react-native-size-matters'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
-import { scale, verticalScale } from 'react-native-size-matters'
 
 import Colors from 'utils/Colors'
 
