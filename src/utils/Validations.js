@@ -23,7 +23,6 @@ export const usernameRequired = (value) => value? undefined : validationStrings.
 
 export const fullnameRequired = (value) => value? undefined : validationStrings.fullNameRequired
 
-
 export const removeSpaces = (term) => term.replace(detectSpacesRegex, '')
 
     

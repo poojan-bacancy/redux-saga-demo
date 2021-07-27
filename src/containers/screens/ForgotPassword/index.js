@@ -2,7 +2,7 @@ import React , { useState } from 'react'
 import { reset } from 'redux-form'
 import { useDispatch } from 'react-redux'
 import { scale, verticalScale } from 'react-native-size-matters'
-import { KeyboardAvoidingView , ScrollView, StyleSheet } from 'react-native'
+import { KeyboardAvoidingView , SafeAreaView, ScrollView, StyleSheet } from 'react-native'
 
 import { Header } from 'components'
 import VerifyEmail from './VerifyEmail'
@@ -32,20 +32,22 @@ const ForgotPassword = (props) => {
     } 
 
     return (
-        <KeyboardAvoidingView
-            behavior="height"
-            keyboardVerticalOffset = { Platform.OS === 'ios' ? 40 : 0 }
-            style={styles.screen}
-        >
-            <Header title = {headerTitle} goBack={goBackHandler} />
+        <SafeAreaView style={styles.screen}>
+            <KeyboardAvoidingView
+                behavior="height"
+                keyboardVerticalOffset = { Platform.OS === 'ios' ? 40 : 0 }
+                style={styles.screen}
+            >
+                <Header title = {headerTitle} goBack={goBackHandler} />
 
-            <ScrollView keyboardShouldPersistTaps="handled" contentContainerStyle={styles.formContainer}>
-                {page === 1 && <VerifyEmail nextPage={goToNextPage} />}
-                {page === 2 && <EnterVerificationCode nextPage={goToNextPage} prevPage={goToPrevPage} />}
-                {page === 3 && <SetPassword onSubmit={onSubmit} prevPage={goToPrevPage} />}
-            </ScrollView>
+                <ScrollView keyboardShouldPersistTaps="handled" contentContainerStyle={styles.formContainer}>
+                    {page === 1 && <VerifyEmail nextPage={goToNextPage} />}
+                    {page === 2 && <EnterVerificationCode nextPage={goToNextPage} prevPage={goToPrevPage} />}
+                    {page === 3 && <SetPassword onSubmit={onSubmit} prevPage={goToPrevPage} />}
+                </ScrollView>
 
-        </KeyboardAvoidingView>
+            </KeyboardAvoidingView>
+        </SafeAreaView>
     )
 }
 

@@ -1,14 +1,14 @@
-// import * as api from 'api';
-import { call, put, takeLatest } from 'redux-saga/effects';
+
+import { put, takeLatest } from 'redux-saga/effects';
+import { userLogin } from 'api/login';
 import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE } from './constants';
 
-export function* loginUser({ payload }) {
+function* loginUser({ payload }) {
     try {
-        let loginResponse
-        // const loginResponse = yield call(api.login.userLogin, payload);
+        const loginResponse = yield (userLogin(payload));
         yield put({ type: LOGIN_SUCCESS, loginResponse });
     } catch (error) {
-        yield put({ type: LOGIN_FAILURE, error: 'Something Went Wrong' });
+        yield put({ type: LOGIN_FAILURE, error: error });
     }
 }
 

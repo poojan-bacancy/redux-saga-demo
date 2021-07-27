@@ -1,14 +1,16 @@
 import React , { useRef } from 'react'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, View , Text } from 'react-native'
 import { verticalScale } from 'react-native-size-matters'
 import { Field, FieldArray, reduxForm } from 'redux-form'
 
 import Styles from './Styles'
+import Colors  from 'utils/Colors'
 import { DeleteButton, CustomButton, FormInput } from 'components'
-import { ADD_HOBBY_BUTTON, BACK_BUTTON, NEXT_BUTTON, placeholders } from './constants'
 import { emailRequired, mobileNoRequired, validateEmail, validateMobileno } from 'utils/Validations'
+import { ADD_HOBBY_BUTTON, BACK_BUTTON, HOBBY_REQUIRED, MIN_ONE_HOBBY_REQUIRED, NEXT_BUTTON, placeholders } from './constants'
 
-const renderHobbies = ({ fields }) => {
+
+const renderHobbies = ({ fields, meta : {error , submitFailed } }) => {
     return(
         <View>
             <CustomButton
@@ -31,8 +33,24 @@ const renderHobbies = ({ fields }) => {
                     <DeleteButton onDelete={() => fields.remove(index)} />
                 </View>
             ))}
+            { submitFailed  && error && <Text style={styles.error}>{error}</Text>}
         </View>
     )
+}
+
+const validate = (values,props) => {
+    const errors = {}
+
+    if (!values.hobbies || !values.hobbies.length) errors.hobbies = { _error : MIN_ONE_HOBBY_REQUIRED  }
+    else{
+        const hobbiesArrayErrors = []
+        values.hobbies.forEach((hobby,index)=>{
+            if (!hobby || !hobby.length) hobbiesArrayErrors[index] = HOBBY_REQUIRED
+        })
+        if(hobbiesArrayErrors.length) errors.hobbies = hobbiesArrayErrors
+    }
+    
+    return errors
 }
 
 const RegisterPageTwo = ({prevPage,handleSubmit,nextPage}) => {
@@ -77,6 +95,7 @@ const RegisterPageTwo = ({prevPage,handleSubmit,nextPage}) => {
 
 export default reduxForm({
     form: 'register-form',
+    validate,
     destroyOnUnmount : false,
     forceUnregisterOnUnmount : true
 })(RegisterPageTwo)
@@ -89,5 +108,10 @@ const styles = StyleSheet.create({
     },
     addHobbyButton : {
         marginTop : verticalScale(20)
+    },
+    error : {
+        color : Colors.red,
+        textAlign : 'center',
+        marginVertical : 10
     }
 })

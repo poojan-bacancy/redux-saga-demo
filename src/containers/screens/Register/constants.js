@@ -16,3 +16,6 @@ export const SUBMIT_BUTTON = "Submit"
 export const ADD_HOBBY_BUTTON = "Add Hobby"
 
 export const VALIDATE_CONFIRM_PASSWORD = 'Enter same password as above.'
+
+export const HOBBY_REQUIRED = "Required"
+export const MIN_ONE_HOBBY_REQUIRED = "At least one hobby must be entered"

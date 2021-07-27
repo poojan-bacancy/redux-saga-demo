@@ -1,72 +1,80 @@
 import React, { useRef } from 'react'
 import { Field , reduxForm } from 'redux-form'
+import { useDispatch, useSelector } from 'react-redux'
 import { scale, verticalScale } from 'react-native-size-matters'
-import { View, Text , Platform, StyleSheet, ScrollView, TouchableOpacity ,KeyboardAvoidingView } from 'react-native'
+import { View, Text , Platform, StyleSheet, ScrollView, TouchableOpacity ,KeyboardAvoidingView, SafeAreaView, ActivityIndicator } from 'react-native'
 
 import Colors  from 'utils/Colors'
+import { loginUser } from './actions'
 import { FormInput , CustomButton } from 'components'
-import { passwordRequired, usernameRequired, validatePassword } from 'utils/Validations'
+import { passwordRequired, emailRequired, validatePassword } from 'utils/Validations'
 import { FORGOTPASS_LINK, placeholders, LOGINFORM_BUTTON, SIGNUP_LINK, SIGNUP_TEXT } from './constants'
 
 const Login = (props) => {
+
+    const loading = useSelector( state => state.Login.loading )
     
     const passRef = useRef()
+    const dispatch = useDispatch()
 
-    const onSubmit = (values) => console.log(values)
+    const onSubmit = (values) => dispatch(loginUser(values))
+    
     const navigateToForgotPass = () => props.navigation.navigate('ForgotPassword')
     const navigateToRegister = () => props.navigation.navigate('Register')
 
     return (
-        <KeyboardAvoidingView
-            behavior="height"
-            keyboardVerticalOffset = { Platform.OS === 'ios' ? 40 : 0 }
-            style={styles.screen}
-        >
-            <ScrollView>
+        <SafeAreaView style={styles.screen}>
+            <KeyboardAvoidingView
+                behavior="height"
+                style={styles.flexOne}
+                keyboardVerticalOffset = { Platform.OS === 'ios' ? 40 : 0 }
+            >
+                <ScrollView keyboardShouldPersistTaps="handled">
 
-                <Field
-                    name="userName"
-                    alphaNumeric
-                    component={FormInput}
-                    blurOnSubmit={false}
-                    placeholder={placeholders.username}
-                    returnKeyType="next"
-                    validate={[usernameRequired]}
-                    onSubmitEditing={() => passRef.current.focus()}
-                />
-                
-                <Field
-                    name="password"
-                    refField={passRef}
-                    secureField
-                    component={FormInput}
-                    blurOnSubmit={true}
-                    placeholder={placeholders.password}
-                    returnKeyType="done"
-                    validate={[passwordRequired,validatePassword]}
-                    onSubmitEditing={props.handleSubmit(onSubmit)}
-                />
+                    <Field
+                        name="email"
+                        keyboardType="email-address"
+                        component={FormInput}
+                        blurOnSubmit={false}
+                        placeholder={placeholders.email}
+                        returnKeyType="next"
+                        validate={[emailRequired]}
+                        onSubmitEditing={() => passRef.current.focus()}
+                    />
+                    
+                    <Field
+                        name="password"
+                        refField={passRef}
+                        secureField
+                        component={FormInput}
+                        blurOnSubmit={true}
+                        placeholder={placeholders.password}
+                        returnKeyType="done"
+                        validate={[passwordRequired,validatePassword]}
+                        onSubmitEditing={props.handleSubmit(onSubmit)}
+                    />
 
-                <TouchableOpacity onPress={navigateToForgotPass} >
-                    <Text style={styles.forgotPass}>{FORGOTPASS_LINK}</Text>
-                </TouchableOpacity>
-
-                <CustomButton
-                    style={styles.button}
-                    buttonLabel={LOGINFORM_BUTTON}
-                    onPress={props.handleSubmit(onSubmit)}
-                />
-
-                <View style={styles.signupLinkContainer}>
-                    <Text style={styles.signuptext}>{SIGNUP_TEXT}</Text>
-                    <TouchableOpacity onPress={navigateToRegister}>
-                        <Text style={[styles.signuptext,styles.signupLink]}>{SIGNUP_LINK}</Text>
+                    <TouchableOpacity onPress={navigateToForgotPass} >
+                        <Text style={styles.forgotPass}>{FORGOTPASS_LINK}</Text>
                     </TouchableOpacity>
-                </View>
 
-            </ScrollView>
+                    { loading ? <ActivityIndicator size="large" color={Colors.green} /> : <CustomButton
+                        style={styles.button}
+                        buttonLabel={LOGINFORM_BUTTON}
+                        onPress={props.handleSubmit(onSubmit)}
+                    />}
 
-        </KeyboardAvoidingView>
+                    <View style={styles.signupLinkContainer}>
+                        <Text style={styles.signuptext}>{SIGNUP_TEXT}</Text>
+                        <TouchableOpacity onPress={navigateToRegister}>
+                            <Text style={[styles.signuptext,styles.signupLink]}>{SIGNUP_LINK}</Text>
+                        </TouchableOpacity>
+                    </View>
+
+                </ScrollView>
+
+            </KeyboardAvoidingView>
+        </SafeAreaView>
     )
 }
 
@@ -80,6 +88,9 @@ const styles = StyleSheet.create({
         flex : 1,
         marginHorizontal : scale(25)
     },
+    flexOne : {
+        flex : 1
+    },  
     forgotPass : {
         color : Colors.grey,
         textAlign : 'right',
