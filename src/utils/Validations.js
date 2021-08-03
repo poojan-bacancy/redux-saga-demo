@@ -13,9 +13,9 @@ const validationStrings = {
 }
 
 
-export const passwordRequired = (value) => value? undefined : validationStrings.passwordRequired
-
 export const emailRequired = (value) => value? undefined : validationStrings.emailRequired
+
+export const passwordRequired = (value) => value? undefined : validationStrings.passwordRequired
 
 export const mobileNoRequired = (value) => value? undefined : validationStrings.mobileNoRequired
 

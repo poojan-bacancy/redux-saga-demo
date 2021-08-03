@@ -8,7 +8,7 @@ function* loginUser({ payload }) {
         const loginResponse = yield (userLogin(payload));
         yield put({ type: LOGIN_SUCCESS, loginResponse });
     } catch (error) {
-        yield put({ type: LOGIN_FAILURE, error: error });
+        yield put({ type: LOGIN_FAILURE, error: error.message });
     }
 }
 

@@ -9,7 +9,6 @@ import { DeleteButton, CustomButton, FormInput } from 'components'
 import { emailRequired, mobileNoRequired, validateEmail, validateMobileno } from 'utils/Validations'
 import { ADD_HOBBY_BUTTON, BACK_BUTTON, HOBBY_REQUIRED, MIN_ONE_HOBBY_REQUIRED, NEXT_BUTTON, placeholders } from './constants'
 
-
 const renderHobbies = ({ fields, meta : {error , submitFailed } }) => {
     return(
         <View>
@@ -61,25 +60,26 @@ const RegisterPageTwo = ({prevPage,handleSubmit,nextPage}) => {
         <View style={Styles.form}>
 
             <Field 
-                name="mobileNo"
                 maxLength={10}
-                keyboardType="numeric"
-                placeholder={placeholders.MOBILENO}
-                component={FormInput}
-                validate={[mobileNoRequired,validateMobileno]}
+                name="mobileNo"
                 blurOnSubmit={false}
                 returnKeyType="next"
+                component={FormInput}
+                keyboardType="numeric"
+                placeholder={placeholders.MOBILENO}
+                validate={[mobileNoRequired,validateMobileno]}
                 onSubmitEditing={() => emailRef.current.focus()}
             />
             <Field 
                 name="email"
                 refField={emailRef}
-                keyboardType="email-address"
-                placeholder={placeholders.EMAIL}
-                component={FormInput}
-                validate={[emailRequired,validateEmail]}
                 blurOnSubmit={true}
                 returnKeyType="done"
+                autoCapitalize="none"
+                component={FormInput}
+                keyboardType="email-address"
+                placeholder={placeholders.EMAIL}
+                validate={[emailRequired,validateEmail]}
             />
             
             <FieldArray name="hobbies" component={renderHobbies} />

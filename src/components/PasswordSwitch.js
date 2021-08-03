@@ -8,11 +8,11 @@ import Colors from 'utils/Colors'
 const PasswordSwitch = (props) => {
     return(
         <Feather
-            onPress={props.onPress}
-            style={styles.eyeIcon}
-            name={props.isVisible ? 'eye' : 'eye-off'}
             size={20}
             color={Colors.grey}
+            style={styles.eyeIcon}
+            onPress={props.onPress}
+            name={props.isVisible ? 'eye' : 'eye-off'}
         />  
     )
 }

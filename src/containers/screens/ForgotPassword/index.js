@@ -1,5 +1,5 @@
-import React , { useState } from 'react'
 import { reset } from 'redux-form'
+import React , { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { scale, verticalScale } from 'react-native-size-matters'
 import { KeyboardAvoidingView , SafeAreaView, ScrollView, StyleSheet } from 'react-native'
@@ -14,7 +14,7 @@ import { FORGOT_PASS_FORM_TITLE, SET_PASSWORD_SCREEN_TITlE, VERIFICATION_SCREEN_
 const ForgotPassword = (props) => {
 
     const [page,setPage] = useState(1)
-    const onSubmit = (values) => console.log(values)
+    const onSubmit = (values) => {}
     const goToNextPage = () => setPage( page => page + 1 )
     const goToPrevPage = () => setPage( page => page - 1 )
 

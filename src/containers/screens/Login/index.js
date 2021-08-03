@@ -7,13 +7,14 @@ import { View, Text , Platform, StyleSheet, ScrollView, TouchableOpacity ,Keyboa
 import Colors  from 'utils/Colors'
 import { loginUser } from './actions'
 import { FormInput , CustomButton } from 'components'
-import { passwordRequired, emailRequired, validatePassword } from 'utils/Validations'
+import { passwordRequired, emailRequired, validatePassword , validateEmail } from 'utils/Validations'
 import { FORGOTPASS_LINK, placeholders, LOGINFORM_BUTTON, SIGNUP_LINK, SIGNUP_TEXT } from './constants'
 
 const Login = (props) => {
 
     const loading = useSelector( state => state.Login.loading )
-    
+    const error = useSelector( state => state.Login.error )
+
     const passRef = useRef()
     const dispatch = useDispatch()
 
@@ -33,23 +34,24 @@ const Login = (props) => {
 
                     <Field
                         name="email"
-                        keyboardType="email-address"
-                        component={FormInput}
-                        blurOnSubmit={false}
-                        placeholder={placeholders.email}
                         returnKeyType="next"
-                        validate={[emailRequired]}
+                        blurOnSubmit={false}
+                        autoCapitalize="none"
+                        component={FormInput}
+                        keyboardType="email-address"
+                        placeholder={placeholders.email}
+                        validate={[emailRequired,validateEmail]}
                         onSubmitEditing={() => passRef.current.focus()}
                     />
                     
                     <Field
+                        secureField
                         name="password"
                         refField={passRef}
-                        secureField
-                        component={FormInput}
                         blurOnSubmit={true}
-                        placeholder={placeholders.password}
                         returnKeyType="done"
+                        component={FormInput}
+                        placeholder={placeholders.password}
                         validate={[passwordRequired,validatePassword]}
                         onSubmitEditing={props.handleSubmit(onSubmit)}
                     />
@@ -70,6 +72,8 @@ const Login = (props) => {
                             <Text style={[styles.signuptext,styles.signupLink]}>{SIGNUP_LINK}</Text>
                         </TouchableOpacity>
                     </View>
+
+                    <Text style={styles.errorText}>{error}</Text>
 
                 </ScrollView>
 
@@ -111,5 +115,11 @@ const styles = StyleSheet.create({
     },  
     signupLink : {
         color : Colors.green,
+    },
+    errorText : {
+        marginTop : 30,
+        color : Colors.red,
+        textAlign : 'center',
+        fontSize : verticalScale(16)
     }
 })

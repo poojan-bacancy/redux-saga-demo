@@ -1,12 +1,12 @@
 export const placeholders = {
-    VERIFY_EMAIL : "Enter email address",
     PASSWORD : "Enter New Password",
+    VERIFY_EMAIL : "Enter email address",
     CONFIRM_PASSWORD : "Re-enter new Password"
 }
 
 export const FORGOT_PASS_FORM_TITLE = "Forgot Password"
-export const VERIFICATION_SCREEN_TITLE = "Enter Verifiation Code"
 export const SET_PASSWORD_SCREEN_TITlE = "Set New Password"
+export const VERIFICATION_SCREEN_TITLE = "Enter Verifiation Code"
 
 export const SUBMIT_BUTTON = "Submit"
 

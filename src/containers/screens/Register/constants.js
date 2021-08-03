@@ -1,10 +1,10 @@
 export const placeholders = {
+    HOBBY : "Hobby",
+    EMAIL : "Email Id",
+    PASSWORD: "Password",
     FULLNAME : "Full Name",
     USERNAME : "User Name",
     MOBILENO : "Mobile Number",
-    EMAIL : "Email Id",
-    HOBBY : "Hobby",
-    PASSWORD: "Password",
     CONFIRMPASSWORD : 'Confirm Password'
 }
 

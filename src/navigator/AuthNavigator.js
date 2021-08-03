@@ -1,6 +1,7 @@
 import React from 'react'
 import { createStackNavigator , TransitionPresets } from '@react-navigation/stack'
-import { ForgotPassword, Login, Register } from '../containers/screens'
+
+import { ForgotPassword, Login, Register } from 'containers/screens'
 
 const AuthNavigator = () => {
     const Stack = createStackNavigator()

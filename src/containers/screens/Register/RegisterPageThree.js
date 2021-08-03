@@ -23,25 +23,25 @@ let RegisterPageThree = (props) => {
         <View style={Styles.form}>
             
             <Field 
-                name="password"
                 secureField
-                placeholder={placeholders.PASSWORD}
-                component={FormInput}
-                validate={[passwordRequired,validatePassword]}
+                name="password"
                 blurOnSubmit={false}
                 returnKeyType="next"
+                component={FormInput}
+                placeholder={placeholders.PASSWORD}
+                validate={[passwordRequired,validatePassword]}
                 onSubmitEditing={() => confirmPassRef.current.focus()}
             />
             <Field 
-                name="confirmPassword"
-                refField={confirmPassRef}
                 secureField
-                placeholder={placeholders.CONFIRMPASSWORD}
-                component={FormInput}
                 blurOnSubmit={true}
-                validate={[passwordRequired,validateConfirmPassword]}
                 returnKeyType="done"
+                name="confirmPassword"
+                component={FormInput}
+                refField={confirmPassRef}
+                placeholder={placeholders.CONFIRMPASSWORD}
                 onSubmitEditing={handleSubmit(onSubmit)}
+                validate={[passwordRequired,validateConfirmPassword]}
             />
 
             <View style={Styles.buttonContainer}>

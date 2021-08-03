@@ -13,8 +13,8 @@ const VerificationCodeInput = (props) => {
         borderColor : active ? Colors.green : Colors.grey
     }
 
-    const textChangeHandler = (term) => {
-        props.input.onChange(term)
+    const textChangeHandler = async (term) => {
+        await props.input.onChange(term)
         props.focusNextFn(term)
     }
 
@@ -44,8 +44,8 @@ const styles = StyleSheet.create({
     },
     codeInput : {
         flex : 1,
-        color : Colors.black,
         textAlign : 'center',
+        color : Colors.black,
         fontSize : verticalScale(22)
     }
 })

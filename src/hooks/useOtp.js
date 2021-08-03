@@ -16,6 +16,7 @@ export default ( timeLimit ) => {
     }
 
     const onResend = () => setResendTime(timeLimit)
+    const clearOtp = () => clearInterval(resendOtpTimerInterval)
 
     useEffect(() => {
         startResendOtpTimer();
@@ -25,6 +26,6 @@ export default ( timeLimit ) => {
         }
       }, [resendTime])
 
-      return [resendTime,onResend]
+      return [resendTime,onResend,clearOtp]
 
 }

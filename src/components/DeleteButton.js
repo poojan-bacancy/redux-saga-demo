@@ -8,10 +8,10 @@ const DeleteButton = ({ onDelete }) => {
     return (
         <TouchableOpacity onPress={onDelete}>
             <MaterilaIcons 
-                style={styles.deleteIcon}
-                name="delete"
                 size={25}
+                name="delete"
                 color={Colors.red}
+                style={styles.deleteIcon}
             />
         </TouchableOpacity>
     )
@@ -20,5 +20,8 @@ const DeleteButton = ({ onDelete }) => {
 export default DeleteButton
 
 const styles = StyleSheet.create({
-    deleteIcon : { marginTop : 20 , marginHorizontal : 10}
+    deleteIcon : { 
+        marginTop : 20 , 
+        marginHorizontal : 10
+    }
 })

@@ -29,14 +29,14 @@ const styles = StyleSheet.create({
     },
     hiText : {
         color : Colors.green,
-        marginLeft : scale(15),
         marginTop : scale(10),
+        marginLeft : scale(15),
         fontSize : verticalScale(22)
     },
     name : {
-        color : Colors.darkGrey,
-        marginLeft : scale(15),
         marginTop : scale(10),
+        marginLeft : scale(15),
+        color : Colors.darkGrey,
         fontSize : verticalScale(18)
     },
     logoutIcon : {

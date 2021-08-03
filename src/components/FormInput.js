@@ -38,14 +38,14 @@ const FormInput = (props) => {
             <View style={formInputContainerStyle}>
                 <TextInput
                     {...props}
-                    secureTextEntry={ props.secureField && !isPasswordVisible }
                     ref={props.refField}
                     style={styles.input}
                     value={props.input.value}
-                    placeholderTextColor={Colors.black}
-                    onChangeText={textChangeHandler}
-                    onFocus={props.input.onFocus}
                     onBlur={props.input.onBlur}
+                    onFocus={props.input.onFocus}
+                    onChangeText={textChangeHandler}
+                    placeholderTextColor={Colors.black}
+                    secureTextEntry={ props.secureField && !isPasswordVisible }
                 />
                 {isPasswordTogglerVisible()}
             </View>
@@ -58,11 +58,11 @@ export default FormInput
 
 const styles = StyleSheet.create({
     formInputContainer :{
-        flexDirection : 'row',
-        alignItems : 'center',
-        justifyContent : 'space-between',
         marginTop : 20,
         borderBottomWidth : 1,
+        alignItems : 'center',
+        flexDirection : 'row',
+        justifyContent : 'space-between',
     },
     input : {
         flex  :1,

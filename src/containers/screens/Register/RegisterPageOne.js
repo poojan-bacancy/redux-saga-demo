@@ -1,5 +1,5 @@
-import React, { useRef } from 'react'
 import { View } from 'react-native'
+import React, { useRef } from 'react'
 import { Field, reduxForm } from 'redux-form'
 
 import Styles from './Styles'
@@ -15,23 +15,23 @@ const RegisterPageOne = ({handleSubmit,nextPage}) => {
         <View style={Styles.form}>
             
             <Field 
-                name="fullName"
                 allowSpaces
-                placeholder={placeholders.FULLNAME}
-                component={FormInput}
-                blurOnSubmit={false}
+                name="fullName"
                 returnKeyType="next"
+                blurOnSubmit={false}
+                component={FormInput}
                 validate={[fullnameRequired]}
+                placeholder={placeholders.FULLNAME}
                 onSubmitEditing= {() => userNameRef.current.focus() }
             />
             <Field 
                 name="userName"
-                refField={userNameRef}
-                placeholder={placeholders.USERNAME}
-                component={FormInput}
-                validate={[usernameRequired]}
-                blurOnSubmit={true}
                 returnKeyType="done"
+                blurOnSubmit={true}
+                component={FormInput}
+                refField={userNameRef}
+                validate={[usernameRequired]}
+                placeholder={placeholders.USERNAME}
                 onSubmitEditing = {handleSubmit(nextPage)}
             />
 

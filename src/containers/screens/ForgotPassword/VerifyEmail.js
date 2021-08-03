@@ -15,10 +15,11 @@ const VerifyEmail = ({handleSubmit,nextPage}) => {
 
             <Field 
                 name="email"
+                returnKeyType="done"
+                autoCapitalize="none"
+                component={FormInput}
                 keyboardType="email-address"
                 placeholder={placeholders.VERIFY_EMAIL}
-                component={FormInput}
-                returnKeyType="done"
                 validate={[emailRequired,validateEmail]}
                 onSubmitEditing= {handleSubmit(nextPage)}
             />

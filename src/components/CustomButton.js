@@ -22,14 +22,14 @@ export default CustomButton
 const styles = StyleSheet.create({
     button : {
         flex : 1,
+        maxHeight : 80,
+        maxWidth : 450,
+        alignItems : 'center',
         flexDirection : 'row',
         justifyContent : 'center',
-        alignItems : 'center',
         backgroundColor : Colors.green,
-        paddingVertical : verticalScale(8),
-        maxWidth : 450,
-        maxHeight : 80,
         borderRadius : moderateScale(10),
+        paddingVertical : verticalScale(8),
     },
     label : {
         color : Colors.white,

@@ -25,24 +25,24 @@ let SetPassword = (props) => {
             <Text style={Styles.detailText}>{SET_PASSWORD_DETAILS}</Text>
 
             <Field 
-                name="newPassword"
                 secureField
-                placeholder={placeholders.PASSWORD}
-                component={FormInput}
-                validate={[passwordRequired,validatePassword]}
-                blurOnSubmit={false}
+                name="newPassword"
                 returnKeyType="next"
+                blurOnSubmit={false}
+                component={FormInput}
+                placeholder={placeholders.PASSWORD}
+                validate={[passwordRequired,validatePassword]}
                 onSubmitEditing={() => confirmPassRef.current.focus()}
             />
             <Field 
-                name="confirmNewPassword"
-                refField={confirmPassRef}
                 secureField
-                placeholder={placeholders.CONFIRM_PASSWORD}
-                component={FormInput}
                 blurOnSubmit={true}
-                validate={[passwordRequired,validateConfirmPassword]}
                 returnKeyType="done"
+                component={FormInput}
+                refField={confirmPassRef}
+                name="confirmNewPassword"
+                placeholder={placeholders.CONFIRM_PASSWORD}
+                validate={[passwordRequired,validateConfirmPassword]}
                 onSubmitEditing={handleSubmit(onSubmit)}
             />
 

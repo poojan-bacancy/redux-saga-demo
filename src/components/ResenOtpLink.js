@@ -16,8 +16,8 @@ export default ResenOtpLink
 
 const styles = StyleSheet.create({
     linkContainer : {
-        marginTop : verticalScale(15) ,
-        alignItems : 'center'
+        alignItems : 'center',
+        marginTop : verticalScale(15)
     },
     resendButton : {
         color : Colors.green,
