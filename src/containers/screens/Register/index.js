@@ -5,6 +5,7 @@ import { scale, verticalScale } from 'react-native-size-matters'
 import { ScrollView , Platform , StyleSheet , KeyboardAvoidingView, SafeAreaView } from 'react-native'
 
 import { Header } from 'components'
+import { signupUser } from './action'
 import { REGISTER_FORM_TITLE } from './constants'
 import RegisterPageOne from './RegisterPageOne'
 import RegisterPageTwo from './RegisterPageTwo'
@@ -12,12 +13,17 @@ import RegisterPageThree from './RegisterPageThree'
 
 const Register = (props) => {
 
+    const dispatch = useDispatch()
+
     const [page,setPage] = useState(1)
-    const onSubmit = (Values) => console.log(Values)
+    const onSubmit = (values) => {
+        const payload = {
+            email : values.email , password : values.password
+        }
+        dispatch(signupUser(payload))
+    }
     const goToNextPage = () => setPage( page => page + 1 )
     const goToPrevPage = () => setPage( page => page - 1 )
-
-    const dispatch = useDispatch()
         
     const goBackHandler = () => {
         dispatch(reset('register-form'))

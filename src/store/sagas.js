@@ -1,8 +1,12 @@
-import { fork } from 'redux-saga/effects';
+import { all, fork } from 'redux-saga/effects';
 import loginScreenSaga from 'containers/screens/Login/saga';
+import signupScreenSaga from 'containers/screens/Register/saga';
 
 function* rootSaga() {
-    yield fork(loginScreenSaga);
+    yield all([
+        loginScreenSaga(),
+        signupScreenSaga()
+      ])
 }
 
 export default rootSaga;

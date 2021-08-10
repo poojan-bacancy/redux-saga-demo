@@ -8,7 +8,7 @@ import Colors  from 'utils/Colors'
 import { loginUser } from './actions'
 import { FormInput , CustomButton } from 'components'
 import { passwordRequired, emailRequired, validatePassword , validateEmail } from 'utils/Validations'
-import { FORGOTPASS_LINK, placeholders, LOGINFORM_BUTTON, SIGNUP_LINK, SIGNUP_TEXT } from './constants'
+import { placeholders, LOGINFORM_BUTTON, SIGNUP_LINK, SIGNUP_TEXT } from './constants'
 
 const Login = (props) => {
 
@@ -20,7 +20,6 @@ const Login = (props) => {
 
     const onSubmit = (values) => dispatch(loginUser(values))
     
-    const navigateToForgotPass = () => props.navigation.navigate('ForgotPassword')
     const navigateToRegister = () => props.navigation.navigate('Register')
 
     return (
@@ -55,10 +54,6 @@ const Login = (props) => {
                         validate={[passwordRequired,validatePassword]}
                         onSubmitEditing={props.handleSubmit(onSubmit)}
                     />
-
-                    <TouchableOpacity onPress={navigateToForgotPass} >
-                        <Text style={styles.forgotPass}>{FORGOTPASS_LINK}</Text>
-                    </TouchableOpacity>
 
                     { loading ? <ActivityIndicator size="large" color={Colors.green} /> : <CustomButton
                         style={styles.button}
