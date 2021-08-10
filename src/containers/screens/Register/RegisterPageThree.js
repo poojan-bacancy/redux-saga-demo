@@ -1,14 +1,17 @@
 import React, { useRef } from 'react'
-import { View } from 'react-native'
-import { connect } from 'react-redux'
+import { ActivityIndicator, View } from 'react-native'
+import { connect, useSelector } from 'react-redux'
 import { Field, formValueSelector, reduxForm } from 'redux-form'
 
 import Styles from './Styles'
+import Colors from 'utils/Colors'
 import { CustomButton, FormInput } from 'components'
 import { passwordRequired, validatePassword } from 'utils/Validations'
 import { BACK_BUTTON, placeholders, SUBMIT_BUTTON, VALIDATE_CONFIRM_PASSWORD } from './constants'
 
 let RegisterPageThree = (props) => {
+
+    const loading = useSelector(state => state.Login.loading)
 
     const {handleSubmit,onSubmit,prevPage} = props
 
@@ -44,10 +47,12 @@ let RegisterPageThree = (props) => {
                 validate={[passwordRequired,validateConfirmPassword]}
             />
 
-            <View style={Styles.buttonContainer}>
+            {loading
+                ? <ActivityIndicator style={{marginTop : 10 }} size={30} color={Colors.green} />
+                :<View style={Styles.buttonContainer}>
                 <CustomButton style={Styles.button} buttonLabel={BACK_BUTTON} onPress={prevPage} />
                 <CustomButton style={Styles.button} buttonLabel={SUBMIT_BUTTON} onPress={handleSubmit(onSubmit)}/>               
-            </View>
+            </View>}
 
         </View>
     )
