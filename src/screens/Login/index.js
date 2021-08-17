@@ -38,7 +38,7 @@ const Login = (props) => {
                         autoCapitalize="none"
                         component={FormInput}
                         keyboardType="email-address"
-                        placeholder={placeholders.email}
+                        placeholder={placeholders.EMAIL}
                         validate={[emailRequired,validateEmail]}
                         onSubmitEditing={() => passRef.current.focus()}
                     />
@@ -50,7 +50,7 @@ const Login = (props) => {
                         blurOnSubmit={true}
                         returnKeyType="done"
                         component={FormInput}
-                        placeholder={placeholders.password}
+                        placeholder={placeholders.PASSWORD}
                         validate={[passwordRequired,validatePassword]}
                         onSubmitEditing={props.handleSubmit(onSubmit)}
                     />

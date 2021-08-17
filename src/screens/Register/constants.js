@@ -19,8 +19,3 @@ export const VALIDATE_CONFIRM_PASSWORD = 'Enter same password as above.'
 
 export const HOBBY_REQUIRED = "Required"
 export const MIN_ONE_HOBBY_REQUIRED = "At least one hobby must be entered"
-
-
-export const REGISTER_REQUEST = "REGISTER_REQUEST"
-export const REGISTER_SUCCESS = "REGISTER_SUCCESS"
-export const REGISTER_FAILURE = "REGISTER_FAILURE"

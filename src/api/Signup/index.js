@@ -1,5 +1,5 @@
 
-const API_KEY = ''  //put you key here
+const API_KEY = 'AIzaSyATUMwesuBSiCA2QdvsDsH1immr8BBKen0'  //put you key here
 
 const endpoint = {
     signup : `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${API_KEY}`
