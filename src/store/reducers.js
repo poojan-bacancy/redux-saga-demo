@@ -7,7 +7,7 @@ const initialState = {
     error : null
 }
 
-const LoginReducer = (state=initialState,action) => {
+const AuthReducer = (state=initialState,action) => {
     switch(action.type) {
         case "LOGIN_REQUEST":
             return {
@@ -54,5 +54,5 @@ const LoginReducer = (state=initialState,action) => {
 
 export const combinedReducers = combineReducers({
     form : formReducer,
-    Login : LoginReducer
+    Auth : AuthReducers
 }) 
